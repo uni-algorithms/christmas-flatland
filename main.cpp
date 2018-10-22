@@ -1,5 +1,7 @@
 #include <cassert>
-#include "flatland.cpp"
+#include "flatland.h"
+
+flatland solver;
 
 auto main() -> int {
     std::ifstream input("input.txt");
@@ -7,10 +9,10 @@ auto main() -> int {
     assert(input);
     assert(output);
 
-    auto result = outcast(input);
+    auto result = solver.outcast(input);
     output << result.size() << std::endl;
-    for(Triangle t : result) {
-        output << t.getIndex() << " ";
+    for (auto t : result) {
+        output << t << " ";
     }
 
     input.close();
